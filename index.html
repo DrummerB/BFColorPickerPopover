@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="BFColorPickerPopover : The standard OS X color picker put into an NSPopover." />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>BFColorPickerPopover</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/DrummerB/BFColorPickerPopover">View on GitHub</a>
+
+          <h1 id="project_title">BFColorPickerPopover</h1>
+          <h2 id="project_tagline">The standard OS X color picker put into an NSPopover.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/DrummerB/BFColorPickerPopover/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/DrummerB/BFColorPickerPopover/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>What is BFColorPickerPopover?</h1>
+
+<p>BFColorPickerPopover is a subclass of NSPopover that includes the standard OS X color picker user interface. This helps reducing the inspector window and panel clutter on the screen, as the popover sticks to the content it belongs to.</p>
+
+<p><img src="http://i.imgur.com/ag4uN.png" alt="Screenshot"></p>
+
+<h1>What are the requirements?</h1>
+
+<p>BFColorPickerPopover was writhed using ARC and Modern Objective-C.
+ARC (with weak references) is supported since OS X 10.7.
+For Modern Objective-C you'll need Xcode 4.4 or later and LLVM.</p>
+
+<h1>How do I use it in my project?</h1>
+
+<p>Drag the folder BFColorPickerPopover into your your project in Xcode.
+Choose "Create groups for any added folders and make sure your target is checked.
+BFColorPickerPopover is a singleton class. Use [BFColorPickerPopover sharedPopover] to access it. The reason for this is, that it uses NSColorPanel to create it's GUI and there is only one shared NSColorPanel available per app.
+You can use the usual showRelativeToRect:ofView:preferredEdge: method of NSPopover to show the shared BFColorPickerPopover instance. But there is also a subclass of NSColorWell included (BFPopoverColorWell) that already handles presenting the popover when needed.
+Check out the example application for both approaches.</p>
+
+<h1>How can I reach you?</h1>
+
+<p>You can e-mail me at <a href="mailto:balazsfaludi@gmail.com">balazsfaludi@gmail.com</a> or contact me on AIM via <a href="mailto:balazsfaludi@sunrise.ch">balazsfaludi@sunrise.ch</a>. </p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">BFColorPickerPopover maintained by <a href="https://github.com/DrummerB">DrummerB</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
