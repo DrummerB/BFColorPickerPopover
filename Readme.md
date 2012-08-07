@@ -24,6 +24,10 @@ BFColorPickerPopover is a singleton class. Use [BFColorPickerPopover sharedPopov
 You can use the usual showRelativeToRect:ofView:preferredEdge: method of NSPopover to show the shared BFColorPickerPopover instance. But there is also a subclass of NSColorWell included (BFPopoverColorWell) that already handles presenting the popover when needed.</br>
 Check out the example application for both approaches.
 
+License
+-------
+
+[New BSD License](http://en.wikipedia.org/wiki/BSD_licenses). For the full license text, see [here](https://raw.github.com/DrummerB/BFColorPickerPopover/master/License).
 
 Credits
 -------

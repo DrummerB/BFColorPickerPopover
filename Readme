@@ -22,6 +22,12 @@ You can use the usual showRelativeToRect:ofView:preferredEdge: method of NSPopov
 Check out the example application for both approaches.
 
 
+License
+-------
+
+New BSD License. For the full license text, see the included LICENSE file.
+
+
 Credits
 -------
 
