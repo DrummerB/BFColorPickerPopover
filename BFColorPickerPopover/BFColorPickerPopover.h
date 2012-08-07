@@ -30,8 +30,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-#define kBFColorPickerPopoverMinimumDragDistance 50.0f
-
 @interface BFColorPickerPopover : NSPopover
 
 @property (nonatomic) NSColorPanel *colorPanel;
