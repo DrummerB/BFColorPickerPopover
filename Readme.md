@@ -5,7 +5,7 @@
 Summary
 -------
 
-BFColorPickerPopover is a subclass of NSPopover that includes the standard OS X color picker user interface. This helps reducing the inspector window and panel clutter on the screen, as the popover sticks to the content it belongs to.
+BFColorPickerPopover is a subclass of NSPopover that includes the standard OS X color picker user interface. This helps reducing the inspector window and panel clutter on the screen, as the popover sticks to the content it belongs to. However it's still possible to transform it into an inspector style floating panel by simple dragging it off from the color well.
 
 Requirements
 ------------

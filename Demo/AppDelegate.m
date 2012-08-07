@@ -33,6 +33,8 @@
 #import "NSColor+BFColorPickerPopover.h"
 #import "ColoredView.h"
 #import "NSColorWell+BFColorPickerPopover.h"
+#import "NSView+BFColorPickerPopover.h"
+#import "BFPopoverColorWell.h"
 
 @implementation AppDelegate
 
@@ -47,6 +49,7 @@
 @synthesize button;
 @synthesize backgroundView;
 @synthesize animateCheckmark;
+@synthesize usePanelCheckmark;
 
 - (void)awakeFromNib {
 	
@@ -75,6 +78,12 @@
 
 - (IBAction)animateCheckClicked:(id)sender {
 	[[BFColorPickerPopover sharedPopover] setAnimates:(animateCheckmark.state == NSOnState)];
+}
+
+- (IBAction)usePanelCheckmarkClicked:(id)sender {
+	for (BFPopoverColorWell *well in @[colorWell1, colorWell2, colorWell3, colorWell4]) {
+		well.useColorPanelIfAvailable = (usePanelCheckmark.state == NSOnState);
+	}
 }
 
 
