@@ -89,7 +89,7 @@
 	
 	// Setup and show the popover.
 	[self.popover showRelativeToRect:self.frame ofView:self.superview preferredEdge:self.preferredEdgeForPopover];
-	self.popover.delegate = self;
+//	self.popover.delegate = self;
 	self.popover.colorWell = self;
 
 	// Disable the shared color panel, while the NSColorWell implementation is executed.

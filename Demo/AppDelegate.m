@@ -68,6 +68,7 @@
 - (void)awakeFromNib {
 	
 //	[[BFColorPickerPopover sharedPopover] setAnimates:NO];
+	[[BFColorPickerPopover sharedPopover] setDelegate:self];
 	
 	for (NSColorWell *well in @[colorWell1, colorWell2, colorWell3, colorWell4, colorWell5, colorWell6, colorWell7, colorWell8])
 		well.color = [NSColor randomColor];
@@ -75,7 +76,7 @@
 
 - (IBAction)buttonClicked:(id)sender {
 	[[BFColorPickerPopover sharedPopover] showRelativeToRect:button.frame ofView:button.superview preferredEdge:NSMinYEdge];
-	[[BFColorPickerPopover sharedPopover] setDelegate:self];
+//	[[BFColorPickerPopover sharedPopover] setDelegate:self];
 	[[[BFColorPickerPopover sharedPopover] colorPanel] setColor:backgroundView.backgroundColor];
 	[[[BFColorPickerPopover sharedPopover] colorPanel] addObserver:self forKeyPath:@"color" options:NSKeyValueObservingOptionNew context:NULL];
 }
@@ -92,6 +93,10 @@
 
 - (IBAction)animateCheckClicked:(id)sender {
 	[[BFColorPickerPopover sharedPopover] setAnimates:(animateCheckmark.state == NSOnState)];
+}
+
+- (NSWindow *)detachableWindowForPopover:(NSPopover *)popover {
+	return [[BFColorPickerPopover sharedPopover] colorPanel];
 }
 
 @end
