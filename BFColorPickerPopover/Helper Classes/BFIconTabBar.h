@@ -1,9 +1,9 @@
 //
-//  ColorPickerPopover.h
-//  ColorPickerPopup
+//  IconTabBar.h
+//  CocosGame
 //
-//  Created by Balázs Faludi on 05.08.12.
-//  Copyright (c) 2012 Balázs Faludi. All rights reserved.
+//  Created by Balázs Faludi on 20.05.12.
+//  Copyright (c) 2012 Universität Basel. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without
 //  modification, are permitted provided that the following conditions are met:
@@ -30,13 +30,47 @@
 
 #import <Cocoa/Cocoa.h>
 
-#define kBFColorPickerPopoverMinimumDragDistance 50.0f
+@class BFIconTabBarItem;
+@class BFIconTabBar;
 
-@interface BFColorPickerPopover : NSPopover
+@protocol BFIconTabBarDelegate <NSObject>
 
-@property (nonatomic) NSColorPanel *colorPanel;
-@property (nonatomic, weak) NSColorWell *colorWell;
+- (void)tabBarChangedSelection:(BFIconTabBar *)tabbar;
 
-+ (BFColorPickerPopover *)sharedPopover;
+@end
+
+
+@interface BFIconTabBar : NSControl
+
+@property (nonatomic, strong) NSMutableArray *items;
+@property (nonatomic) CGFloat itemWidth;
+@property (nonatomic) BOOL multipleSelection;
+@property (nonatomic, unsafe_unretained) IBOutlet id<BFIconTabBarDelegate> delegate;
+
+- (BFIconTabBarItem *)selectedItem;
+- (NSInteger)selectedIndex;
+- (NSArray *)selectedItems;
+- (NSIndexSet *)selectedIndexes;
+
+- (IBAction)selectAll;
+- (void)selectIndex:(NSUInteger)index;
+- (void)selectItem:(BFIconTabBarItem *)item;
+- (void)selectIndexes:(NSIndexSet *)indexes byExtendingSelection:(BOOL)extending;
+
+- (IBAction)deselectAll;
+- (void)deselectIndex:(NSUInteger)index;
+- (void)deselectIndexes:(NSIndexSet *)indexes;
+
+@end
+
+
+@interface BFIconTabBarItem : NSObject
+
+@property (nonatomic, strong) NSImage *icon;
+@property (nonatomic, copy) NSString *tooltip;
+@property (nonatomic, unsafe_unretained) BFIconTabBar *tabBar;
+
+- (id)initWithIcon:(NSImage *)image tooltip:(NSString *)tooltipString;
++ (BFIconTabBarItem *)itemWithIcon:(NSImage *)image tooltip:(NSString *)tooltipString;
 
 @end

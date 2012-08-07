@@ -36,7 +36,9 @@
 @end
 
 
-@implementation BFColorPickerPopover
+@implementation BFColorPickerPopover {
+	BOOL dragging;
+}
 
 + (BFColorPickerPopover *)sharedPopover
 {
@@ -53,6 +55,7 @@
     self = [super init];
     if (self) {
 		self.behavior = NSPopoverBehaviorSemitransient;
+		dragging = NO;
 	}
     return self;
 }
@@ -94,5 +97,25 @@
 	}
 	return NO;
 }
+
+//- (void)setShouldHideAnchor:(BOOL)hide {
+//	return dragging;
+//}
+
+//- (void)_dragWithEvent:(NSEvent *)event {
+//	NSLog(@"OMG");
+//	[self setValue:@100 forKey:@"_anchorSize"];
+////	[NSEvent addGlobalMonitorForEventsMatchingMask:NSLeftMouseDragged handler:^(NSEvent *event) {
+////		CGPoint point = [NSEvent mouseLocation];
+////		NSLog(@"x: %.2f, y: %.2f", point.x, point.y);
+////	}];
+////	NSLog(@"x: %.2f, y: %.2f", point.x, point.y);
+//	
+//	dragging = YES;
+//	NSWindow *win2 = [self valueForKey:@"_popoverWindow"];
+//	[win2 setFrame:CGRectMake(500, 500, 300, 300) display:YES animate:YES];
+//	
+//}
+
 
 @end

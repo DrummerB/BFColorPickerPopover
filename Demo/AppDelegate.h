@@ -47,8 +47,11 @@
 @property (weak) IBOutlet NSButton *button;
 @property (weak) IBOutlet ColoredView *backgroundView;
 @property (weak) IBOutlet NSButton *animateCheckmark;
+@property (weak) IBOutlet NSButton *usePanelCheckmark;
 
 - (IBAction)buttonClicked:(id)sender;
 - (IBAction)animateCheckClicked:(id)sender;
+- (IBAction)usePanelCheckmarkClicked:(id)sender;
+
 
 @end

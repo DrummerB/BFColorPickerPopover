@@ -45,6 +45,7 @@
 
 - (void)setup {
 	self.preferredEdgeForPopover = NSMaxXEdge;
+	self.useColorPanelIfAvailable = YES;
 }
 
 - (id)initWithCoder:(NSCoder *)coder
@@ -65,21 +66,30 @@
     return self;
 }
 
-- (void)activate:(BOOL)exclusive {
-	if (self.isActive) return;
-	
-	self.popover = [BFColorPickerPopover sharedPopover];
-	
+- (void)activateWithPopover {
 	// Setup and show the popover.
+	self.popover = [BFColorPickerPopover sharedPopover];
 	[self.popover showRelativeToRect:self.frame ofView:self.superview preferredEdge:self.preferredEdgeForPopover];
 	self.popover.delegate = self;
 	self.popover.colorWell = self;
-
+	
 	// Disable the shared color panel, while the NSColorWell implementation is executed.
 	// This is done by overriding the orderFront: method of NSColorPanel in a category.
 	[[NSColorPanel sharedColorPanel] disablePanel];
 	[super activate:YES];
 	[[NSColorPanel sharedColorPanel] enablePanel];
+	
+	self.isActive = YES;
+}
+
+- (void)activate:(BOOL)exclusive {
+	if (self.isActive) return;
+	
+	if (self.useColorPanelIfAvailable && [NSColorPanel sharedColorPanelExists] && [[NSColorPanel sharedColorPanel] isVisible]) {
+		[super activate:exclusive];
+	} else {
+		[self activateWithPopover];
+	}
 	
 	self.isActive = YES;
 }
@@ -90,6 +100,16 @@
 	self.popover.colorWell = nil;
 	self.popover = nil;
 	self.isActive = NO;
+}
+
+- (void)mouseDown:(NSEvent *)theEvent {
+	if([theEvent clickCount] == 2 && [NSColorPanel sharedColorPanelExists] && [[NSColorPanel sharedColorPanel] isVisible]) {
+//		[self deactivate];
+		[self activateWithPopover];
+	} else {
+		[super mouseDown:theEvent];
+	}
+	
 }
 
 @end
