@@ -10,10 +10,10 @@ BFColorPickerPopover is a subclass of NSPopover that includes the standard OS X 
 Requirements
 ------------
 
-BFColorPickerPopover was writhed using [ARC](http://developer.apple.com/library/mac/#releasenotes/ObjectiveC/RN-TransitioningToARC/Introduction/Introduction.html#//apple_ref/doc/uid/TP40011226) and Modern Objective-C.
+BFColorPickerPopover was written using [ARC](http://developer.apple.com/library/mac/#releasenotes/ObjectiveC/RN-TransitioningToARC/Introduction/Introduction.html#//apple_ref/doc/uid/TP40011226) and Modern Objective-C.
 ARC (with weak references) is supported since OS X 10.7.
 For Modern Objective-C you'll need Xcode 4.4 or later and LLVM.
-
+I also had to use a few undocumented methods, so I can't guarantee that Apple won't reject an app with this code. They aren't that strict with OS X apps though.
 
 Instructions
 ------------
