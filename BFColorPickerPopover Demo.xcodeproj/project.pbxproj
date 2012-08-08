@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EC12DED715D1913900D0C77B /* NSView+BFColorPickerPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = EC12DED615D1913900D0C77B /* NSView+BFColorPickerPopover.m */; };
 		EC12DEE315D1D36800D0C77B /* BFColorPickerPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC12DEDE15D1D36800D0C77B /* BFColorPickerPopoverView.m */; };
 		EC12DEE415D1D36800D0C77B /* BFColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC12DEE015D1D36800D0C77B /* BFColorPickerViewController.m */; };
 		EC12DEE515D1D36800D0C77B /* BFIconTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EC12DEE215D1D36800D0C77B /* BFIconTabBar.m */; };
@@ -26,8 +25,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		EC12DED515D1913900D0C77B /* NSView+BFColorPickerPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+BFColorPickerPopover.h"; sourceTree = "<group>"; };
-		EC12DED615D1913900D0C77B /* NSView+BFColorPickerPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+BFColorPickerPopover.m"; sourceTree = "<group>"; };
 		EC12DEDD15D1D36800D0C77B /* BFColorPickerPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFColorPickerPopoverView.h; sourceTree = "<group>"; };
 		EC12DEDE15D1D36800D0C77B /* BFColorPickerPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFColorPickerPopoverView.m; sourceTree = "<group>"; };
 		EC12DEDF15D1D36800D0C77B /* BFColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFColorPickerViewController.h; sourceTree = "<group>"; };
@@ -174,8 +171,6 @@
 				ECDEE46115D02E25004A4CC9 /* NSColorPanel+BFColorPickerPopover.m */,
 				ECDEE47415D056CD004A4CC9 /* NSColorWell+BFColorPickerPopover.h */,
 				ECDEE47515D056CD004A4CC9 /* NSColorWell+BFColorPickerPopover.m */,
-				EC12DED515D1913900D0C77B /* NSView+BFColorPickerPopover.h */,
-				EC12DED615D1913900D0C77B /* NSView+BFColorPickerPopover.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -252,7 +247,6 @@
 				ECDEE46B15D02E25004A4CC9 /* BFPopoverColorWell.m in Sources */,
 				ECDEE47315D03C2E004A4CC9 /* ColoredView.m in Sources */,
 				ECDEE47615D056CD004A4CC9 /* NSColorWell+BFColorPickerPopover.m in Sources */,
-				EC12DED715D1913900D0C77B /* NSView+BFColorPickerPopover.m in Sources */,
 				EC12DEE315D1D36800D0C77B /* BFColorPickerPopoverView.m in Sources */,
 				EC12DEE415D1D36800D0C77B /* BFColorPickerViewController.m in Sources */,
 				EC12DEE515D1D36800D0C77B /* BFIconTabBar.m in Sources */,

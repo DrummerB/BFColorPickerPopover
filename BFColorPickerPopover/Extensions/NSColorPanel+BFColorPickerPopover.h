@@ -32,5 +32,6 @@
 
 - (void)disablePanel;
 - (void)enablePanel;
++ (NSString *)color;
 
 @end

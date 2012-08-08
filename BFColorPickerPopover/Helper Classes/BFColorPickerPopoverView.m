@@ -17,6 +17,10 @@ static inline NSString * NSStringFromNSEdgeInsets(NSEdgeInsets i) {return [NSStr
 @property (nonatomic, weak) NSView *colorPanelView;
 @end
 
+@interface BFColorPickerPopover ()
+- (void)closeAndDeactivateColorWell:(BOOL)deactivate removeTarget:(BOOL)remove removeObserver:(BOOL)removeObserver;
+@end
+
 
 @interface BFColorPickerPopoverView ()
 @property (nonatomic) CGPoint originalWindowOrigin;
@@ -73,8 +77,14 @@ static inline NSString * NSStringFromNSEdgeInsets(NSEdgeInsets i) {return [NSStr
 			CGRect panelFrame = [panel frameRectForContentRect:popoverViewFrameRelativeToScreen];
 			[panel setFrame:panelFrame display:YES];
 			
+			
+//			[self.window orderOut:self];
+			
+			[[BFColorPickerPopover sharedPopover] closeAndDeactivateColorWell:NO removeTarget:NO removeObserver:NO];
+//			[self.window orderOut:self];
 			[panel orderFront:nil];
-			[self.window orderOut:self];
+			
+//			panel.color = [BFColorPickerPopover sharedPopover].color;
 		}
 		
 		[[BFColorPickerPopover sharedPopover] setValue:@0 forKey:@"shouldHideAnchor"];

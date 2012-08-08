@@ -33,12 +33,14 @@
 #import "NSColorPanel+BFColorPickerPopover.h"
 #import "NSColorWell+BFColorPickerPopover.h"
 
+@interface BFColorPickerPopover ()
+@property (nonatomic) NSColorPanel *colorPanel;
+@property (nonatomic, weak) NSColorWell *colorWell;
+@end
 
 @interface BFPopoverColorWell ()
-
 @property (nonatomic, weak) BFColorPickerPopover *popover;
 @property (nonatomic, readwrite) BOOL isActive;
-
 @end
 
 @implementation BFPopoverColorWell
@@ -67,10 +69,12 @@
 }
 
 - (void)activateWithPopover {
+	if (self.isActive) return;
+	
 	// Setup and show the popover.
 	self.popover = [BFColorPickerPopover sharedPopover];
+	self.popover.color = self.color;
 	[self.popover showRelativeToRect:self.frame ofView:self.superview preferredEdge:self.preferredEdgeForPopover];
-	self.popover.delegate = self;
 	self.popover.colorWell = self;
 	
 	// Disable the shared color panel, while the NSColorWell implementation is executed.
@@ -87,11 +91,10 @@
 	
 	if (self.useColorPanelIfAvailable && [NSColorPanel sharedColorPanelExists] && [[NSColorPanel sharedColorPanel] isVisible]) {
 		[super activate:exclusive];
+		self.isActive = YES;
 	} else {
 		[self activateWithPopover];
 	}
-	
-	self.isActive = YES;
 }
 
 - (void)deactivate {
@@ -102,9 +105,10 @@
 	self.isActive = NO;
 }
 
+// Force using a popover (even if useColorPanelIfAvailable = YES), when the user double clicks the well.
 - (void)mouseDown:(NSEvent *)theEvent {
 	if([theEvent clickCount] == 2 && [NSColorPanel sharedColorPanelExists] && [[NSColorPanel sharedColorPanel] isVisible]) {
-//		[self deactivate];
+		[self deactivate];
 		[self activateWithPopover];
 	} else {
 		[super mouseDown:theEvent];

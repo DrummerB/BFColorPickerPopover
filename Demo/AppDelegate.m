@@ -33,8 +33,8 @@
 #import "NSColor+BFColorPickerPopover.h"
 #import "ColoredView.h"
 #import "NSColorWell+BFColorPickerPopover.h"
-#import "NSView+BFColorPickerPopover.h"
 #import "BFPopoverColorWell.h"
+#import "NSColorPanel+BFColorPickerPopover.h"
 
 @implementation AppDelegate
 
@@ -58,22 +58,16 @@
 	for (NSColorWell *well in @[colorWell1, colorWell2, colorWell3, colorWell4, colorWell5, colorWell6, colorWell7, colorWell8])
 		well.color = [NSColor randomColor];
 }
-
 - (IBAction)buttonClicked:(id)sender {
+	
 	[[BFColorPickerPopover sharedPopover] showRelativeToRect:button.frame ofView:button.superview preferredEdge:NSMinYEdge];
-	[[BFColorPickerPopover sharedPopover] setDelegate:self];
-	[[[BFColorPickerPopover sharedPopover] colorPanel] setColor:backgroundView.backgroundColor];
-	[[[BFColorPickerPopover sharedPopover] colorPanel] addObserver:self forKeyPath:@"color" options:NSKeyValueObservingOptionNew context:NULL];
+	[[BFColorPickerPopover sharedPopover] setTarget:self];
+	[[BFColorPickerPopover sharedPopover] setAction:@selector(colorChanged:)];
+	[[BFColorPickerPopover sharedPopover] setColor:backgroundView.backgroundColor];
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	if (object == [[BFColorPickerPopover sharedPopover] colorPanel] && [keyPath isEqualToString:@"color"]) {
-		backgroundView.backgroundColor = [[[BFColorPickerPopover sharedPopover] colorPanel] color];
-	}
-}
-
-- (void)popoverDidClose:(NSNotification *)notification {
-	[[[BFColorPickerPopover sharedPopover] colorPanel] removeObserver:self forKeyPath:@"color"];
+- (void)colorChanged:(id)sender {
+	backgroundView.backgroundColor = [BFColorPickerPopover sharedPopover].color;
 }
 
 - (IBAction)animateCheckClicked:(id)sender {

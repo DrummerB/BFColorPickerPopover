@@ -36,9 +36,18 @@
 @end
 
 
+@interface BFColorPickerPopover ()
+@property (nonatomic) NSColorPanel *colorPanel;
+@property (nonatomic, weak) NSColorWell *colorWell;
+@end
+
+
 @implementation BFColorPickerPopover {
-	BOOL dragging;
+	NSColor *_color;
 }
+
+#pragma mark -
+#pragma mark Initialization & Destruction
 
 + (BFColorPickerPopover *)sharedPopover
 {
@@ -55,27 +64,51 @@
     self = [super init];
     if (self) {
 		self.behavior = NSPopoverBehaviorSemitransient;
-		dragging = NO;
+		_color = [NSColor whiteColor];
 	}
     return self;
 }
+
+#pragma mark -
+#pragma mark Getters & Setters
+
+- (NSColorPanel *)colorPanel {
+	return ((BFColorPickerViewController *)self.contentViewController).colorPanel;
+}
+
+- (NSColor *)color {
+	return self.colorPanel.color;
+}
+
+- (void)setColor:(NSColor *)color {
+	_color = color;
+	if (self.isShown) {
+		self.colorPanel.color = color;
+	}
+}
+
+#pragma mark -
+#pragma mark Popover Lifecycle
 
 - (void)showRelativeToRect:(NSRect)positioningRect ofView:(NSView *)positioningView preferredEdge:(NSRectEdge)preferredEdge {
 	
 	// Close the popover without an animation if it's already on screen.
 	if (self.isShown) {
+		id targetBackup = self.target;
+		SEL actionBackup = self.action;
 		BOOL animatesBackup = self.animates;
 		self.animates = NO;
 		[self close];
 		self.animates = animatesBackup;
+		self.target = targetBackup;
+		self.action = actionBackup;
 	}
 	
 	self.contentViewController = [[BFColorPickerViewController alloc] init];
 	[super showRelativeToRect:positioningRect ofView:positioningView preferredEdge:preferredEdge];
-}
-
-- (NSColorPanel *)colorPanel {
-	return ((BFColorPickerViewController *)self.contentViewController).colorPanel;
+	
+	self.colorPanel.color = _color;
+	[self.colorPanel addObserver:self forKeyPath:@"color" options:NSKeyValueObservingOptionNew context:NULL];
 }
 
 // On pressing Esc, close the popover.
@@ -83,39 +116,61 @@
 	[self close];
 }
 
-// Deactive any color wells on close.
-- (void)close {
-	[super close];
+- (void)removeTargetAndAction {
+	self.target = nil;
+	self.action = nil;
+}
+
+- (void)deactivateColorWell {
 	[self.colorWell deactivate];
 	self.colorWell = nil;
 }
 
+- (void)closeAndDeactivateColorWell:(BOOL)deactivate removeTarget:(BOOL)removeTarget removeObserver:(BOOL)removeObserver {
+	
+	if (removeTarget) {
+		[self removeTargetAndAction];
+	}
+	if (removeObserver) {
+		[self.colorPanel removeObserver:self forKeyPath:@"color"];
+	}
+	
+	// For some strange reason I couldn't figure out, the panel changes it's color when closed.
+	// To fix this, I reset the color after it's closed.
+	NSColor *backupColor = self.colorPanel.color;
+	[super close];
+	self.colorPanel.color = backupColor;
+	
+	if (deactivate) {
+		[self deactivateColorWell];
+	}
+}
+
+- (void)close {
+	[self closeAndDeactivateColorWell:YES removeTarget:YES removeObserver:YES];
+}
+
 - (BOOL)_delegatePopoverShouldClose:(id)sender {
 	if ([super _delegatePopoverShouldClose:sender]) {
-		[self.colorWell deactivate];
+		[self removeTargetAndAction];
+		[self.colorPanel removeObserver:self forKeyPath:@"color"];
+		[self deactivateColorWell];
 		return YES;
 	}
 	return NO;
 }
 
-//- (void)setShouldHideAnchor:(BOOL)hide {
-//	return dragging;
-//}
+#pragma mark -
+#pragma mark Observation
 
-//- (void)_dragWithEvent:(NSEvent *)event {
-//	NSLog(@"OMG");
-//	[self setValue:@100 forKey:@"_anchorSize"];
-////	[NSEvent addGlobalMonitorForEventsMatchingMask:NSLeftMouseDragged handler:^(NSEvent *event) {
-////		CGPoint point = [NSEvent mouseLocation];
-////		NSLog(@"x: %.2f, y: %.2f", point.x, point.y);
-////	}];
-////	NSLog(@"x: %.2f, y: %.2f", point.x, point.y);
-//	
-//	dragging = YES;
-//	NSWindow *win2 = [self valueForKey:@"_popoverWindow"];
-//	[win2 setFrame:CGRectMake(500, 500, 300, 300) display:YES animate:YES];
-//	
-//}
-
+// Notify the target when the color changes.
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+	if (object == self.colorPanel && [keyPath isEqualToString:@"color"]) {
+		_color = self.colorPanel.color;
+		if (self.target && self.action && [self.target respondsToSelector:self.action]) {
+			[self.target performSelector:self.action withObject:self];
+		}
+	}
+}
 
 @end

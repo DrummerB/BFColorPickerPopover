@@ -33,6 +33,7 @@
 @interface NSColorWell (BFColorPickerPopover)
 
 + (void)deactivateAll;
++ (NSColorWell *)hiddenWell;
 - (void)_performActivationClickWithShiftDown:(BOOL)shift;
 
 @end

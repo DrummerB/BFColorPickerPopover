@@ -33,6 +33,10 @@
 
 static BOOL colorPanelEnabled = YES;
 
+@interface BFColorPickerPopover ()
+@property (nonatomic) NSColorPanel *colorPanel;
+@end
+
 @implementation NSColorPanel (BFColorPickerPopover)
 
 - (void)disablePanel {
@@ -45,13 +49,24 @@ static BOOL colorPanelEnabled = YES;
 
 - (void)orderFront:(id)sender {
 	if (colorPanelEnabled) {
-		if ([BFColorPickerPopover sharedPopover].colorPanel) {
-			self.contentView = [BFColorPickerPopover sharedPopover].colorPanel.contentView;
+		NSColorPanel *panel = [BFColorPickerPopover sharedPopover].colorPanel;
+		if (panel) {
+			self.contentView = panel.contentView;
 		}
 		[super orderFront:sender];
 	} else {
 		// Don't do anything.
 	}
+}
+
++ (NSString *)color {
+	NSColorPanel *panel = [NSColorPanel sharedColorPanel];
+	NSColor *color = [panel color];
+	return [NSString stringWithFormat:@"r: %d, g: %d, b: %d, a: %d",
+			(int)roundf([color redComponent]*255),
+			(int)roundf([color greenComponent]*255),
+			(int)roundf([color blueComponent]*255),
+			(int)roundf([color alphaComponent]*255)];
 }
 
 @end

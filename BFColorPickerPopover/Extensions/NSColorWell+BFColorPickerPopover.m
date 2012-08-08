@@ -32,15 +32,21 @@
 #import "NSColorPanel+BFColorPickerPopover.h"
 #import "BFColorPickerPopover.h"
 
+static NSColorWell *hiddenWell = nil;
+
 @implementation NSColorWell (BFColorPickerPopover)
 
 + (void)deactivateAll {
 	[[NSColorPanel sharedColorPanel] disablePanel];
-	NSColorWell *hiddenWell = [[NSColorWell alloc] init];
+	hiddenWell = [[NSColorWell alloc] init];
+	hiddenWell.color = [NSColor colorWithCalibratedRed:1/255.0 green:2/255.0 blue:3/255.0 alpha:1];
 	[hiddenWell activate:YES];
 	[hiddenWell deactivate];
 	[[NSColorPanel sharedColorPanel] enablePanel];
+}
 
++ (NSColorWell *)hiddenWell {
+	return hiddenWell;
 }
 
 - (void)_performActivationClickWithShiftDown:(BOOL)shift {
@@ -52,12 +58,12 @@
 			[popover close];
 			popover.animates = animatesBackup;
 		}
-		
+		[BFColorPickerPopover sharedPopover].target = nil;
+		[BFColorPickerPopover sharedPopover].action = NULL;
 		[self activate:!shift];
 	} else {
 		[self deactivate];
 	}
-	
 }
 
 @end

@@ -34,8 +34,9 @@
 
 @interface BFColorPickerPopover : NSPopover
 
-@property (nonatomic) NSColorPanel *colorPanel;
-@property (nonatomic, weak) NSColorWell *colorWell;
+@property (nonatomic) id target;
+@property (nonatomic) SEL action;
+@property (nonatomic, weak) NSColor *color;
 
 + (BFColorPickerPopover *)sharedPopover;
 
