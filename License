@@ -30,10 +30,17 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 Suggested Attribution Format
 ----------------------------
 
-The license requires that you give credit to Balázs Faludi, as the original author of any of our source that you use. The placement and format of the credit is up to you, but we prefer the credit to be in the software’s “About” window. Alternatively, you could put the credit in a list of acknowledgements within the software, in the software’s documentation, or on the web page for the software. The suggested format for the attribution is:
+The license requires that you give credit to Balázs Faludi, as the original 
+author of any of our source that you use. The placement and format of the credit 
+is up to you, but we prefer the credit to be in the software’s “About” window. 
+Alternatively, you could put the credit in a list of acknowledgements within the 
+software, in the software’s documentation, or on the web page for the software. 
+The suggested format for the attribution is:
 
 	Includes <Name of Code> by Balázs Faludi.
 
-where <Name of Code> would be replaced by the name of the specific source-code package you made use of. When possible, please link the text “Balázs Faludi” to the following URL: http://balazs.faludi.ch
+where <Name of Code> would be replaced by the name of the specific source-code 
+package you made use of. When possible, please link the text “Balázs Faludi” 
+to the following URL: http://balazs.faludi.ch
 
 

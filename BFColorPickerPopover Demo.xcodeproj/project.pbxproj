@@ -7,22 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EC12DEE315D1D36800D0C77B /* BFColorPickerPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC12DEDE15D1D36800D0C77B /* BFColorPickerPopoverView.m */; };
-		EC12DEE415D1D36800D0C77B /* BFColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC12DEE015D1D36800D0C77B /* BFColorPickerViewController.m */; };
-		EC12DEE515D1D36800D0C77B /* BFIconTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EC12DEE215D1D36800D0C77B /* BFIconTabBar.m */; };
 		EC459E8815CEDDB500297FBF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC459E8715CEDDB500297FBF /* Cocoa.framework */; };
 		EC459E9215CEDDB500297FBF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EC459E9015CEDDB500297FBF /* InfoPlist.strings */; };
 		EC459E9415CEDDB500297FBF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EC459E9315CEDDB500297FBF /* main.m */; };
 		EC459E9815CEDDB500297FBF /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = EC459E9615CEDDB500297FBF /* Credits.rtf */; };
 		EC459E9B15CEDDB500297FBF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC459E9A15CEDDB500297FBF /* AppDelegate.m */; };
 		EC459E9E15CEDDB500297FBF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC459E9C15CEDDB500297FBF /* MainMenu.xib */; };
-		ECDEE46615D02E25004A4CC9 /* BFColorPickerPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDEE45A15D02E25004A4CC9 /* BFColorPickerPopover.m */; };
-		ECDEE46815D02E25004A4CC9 /* NSColor+BFColorPickerPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDEE45F15D02E25004A4CC9 /* NSColor+BFColorPickerPopover.m */; };
-		ECDEE46915D02E25004A4CC9 /* NSColorPanel+BFColorPickerPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDEE46115D02E25004A4CC9 /* NSColorPanel+BFColorPickerPopover.m */; };
-		ECDEE46B15D02E25004A4CC9 /* BFPopoverColorWell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDEE46515D02E25004A4CC9 /* BFPopoverColorWell.m */; };
+		EC6A496A15D71030007EF6D8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC459E8715CEDDB500297FBF /* Cocoa.framework */; };
+		EC6A497915D710C4007EF6D8 /* NSColor+BFColorPickerPopover.h in Headers */ = {isa = PBXBuildFile; fileRef = ECDEE45E15D02E25004A4CC9 /* NSColor+BFColorPickerPopover.h */; };
+		EC6A497A15D710C4007EF6D8 /* NSColor+BFColorPickerPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDEE45F15D02E25004A4CC9 /* NSColor+BFColorPickerPopover.m */; };
+		EC6A497B15D710C4007EF6D8 /* NSColorPanel+BFColorPickerPopover.h in Headers */ = {isa = PBXBuildFile; fileRef = ECDEE46015D02E25004A4CC9 /* NSColorPanel+BFColorPickerPopover.h */; };
+		EC6A497C15D710C4007EF6D8 /* NSColorPanel+BFColorPickerPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDEE46115D02E25004A4CC9 /* NSColorPanel+BFColorPickerPopover.m */; };
+		EC6A497D15D710C4007EF6D8 /* NSColorWell+BFColorPickerPopover.h in Headers */ = {isa = PBXBuildFile; fileRef = ECDEE47415D056CD004A4CC9 /* NSColorWell+BFColorPickerPopover.h */; };
+		EC6A497E15D710C4007EF6D8 /* NSColorWell+BFColorPickerPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDEE47515D056CD004A4CC9 /* NSColorWell+BFColorPickerPopover.m */; };
+		EC6A497F15D710C8007EF6D8 /* BFColorPickerPopoverView.h in Headers */ = {isa = PBXBuildFile; fileRef = EC12DEDD15D1D36800D0C77B /* BFColorPickerPopoverView.h */; };
+		EC6A498015D710C8007EF6D8 /* BFColorPickerPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC12DEDE15D1D36800D0C77B /* BFColorPickerPopoverView.m */; };
+		EC6A498115D710C8007EF6D8 /* BFColorPickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EC12DEDF15D1D36800D0C77B /* BFColorPickerViewController.h */; };
+		EC6A498215D710C8007EF6D8 /* BFColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC12DEE015D1D36800D0C77B /* BFColorPickerViewController.m */; };
+		EC6A498315D710C8007EF6D8 /* BFIconTabBar.h in Headers */ = {isa = PBXBuildFile; fileRef = EC12DEE115D1D36800D0C77B /* BFIconTabBar.h */; };
+		EC6A498415D710C8007EF6D8 /* BFIconTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EC12DEE215D1D36800D0C77B /* BFIconTabBar.m */; };
+		EC6A498515D710CC007EF6D8 /* BFColorPickerPopover.h in Headers */ = {isa = PBXBuildFile; fileRef = ECDEE45915D02E25004A4CC9 /* BFColorPickerPopover.h */; };
+		EC6A498615D710CC007EF6D8 /* BFColorPickerPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDEE45A15D02E25004A4CC9 /* BFColorPickerPopover.m */; };
+		EC6A498715D710CC007EF6D8 /* BFPopoverColorWell.h in Headers */ = {isa = PBXBuildFile; fileRef = ECDEE46415D02E25004A4CC9 /* BFPopoverColorWell.h */; };
+		EC6A498815D710CC007EF6D8 /* BFPopoverColorWell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDEE46515D02E25004A4CC9 /* BFPopoverColorWell.m */; };
+		EC6A498B15D71139007EF6D8 /* libBFColorPickerPopover.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC6A496915D71030007EF6D8 /* libBFColorPickerPopover.a */; };
 		ECDEE47315D03C2E004A4CC9 /* ColoredView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDEE47215D03C2D004A4CC9 /* ColoredView.m */; };
-		ECDEE47615D056CD004A4CC9 /* NSColorWell+BFColorPickerPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDEE47515D056CD004A4CC9 /* NSColorWell+BFColorPickerPopover.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EC6A498915D71134007EF6D8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EC459E7A15CEDDB500297FBF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EC6A496815D71030007EF6D8;
+			remoteInfo = BFColorPickerPopover;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		EC12DEDD15D1D36800D0C77B /* BFColorPickerPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFColorPickerPopoverView.h; sourceTree = "<group>"; };
@@ -44,6 +64,7 @@
 		EC459E9915CEDDB500297FBF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EC459E9A15CEDDB500297FBF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		EC459E9D15CEDDB500297FBF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		EC6A496915D71030007EF6D8 /* libBFColorPickerPopover.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBFColorPickerPopover.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC70114A15D0774400B9F502 /* License */ = {isa = PBXFileReference; lastKnownFileType = text; path = License; sourceTree = "<group>"; };
 		EC70114B15D0774400B9F502 /* Readme */ = {isa = PBXFileReference; lastKnownFileType = text; path = Readme; sourceTree = "<group>"; };
 		ECDEE45915D02E25004A4CC9 /* BFColorPickerPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BFColorPickerPopover.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -66,6 +87,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC459E8815CEDDB500297FBF /* Cocoa.framework in Frameworks */,
+				EC6A498B15D71139007EF6D8 /* libBFColorPickerPopover.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC6A496615D71030007EF6D8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC6A496A15D71030007EF6D8 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				EC459E8315CEDDB500297FBF /* BFColorPickerPopover Demo.app */,
+				EC6A496915D71030007EF6D8 /* libBFColorPickerPopover.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -177,6 +208,24 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		EC6A496715D71030007EF6D8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC6A497915D710C4007EF6D8 /* NSColor+BFColorPickerPopover.h in Headers */,
+				EC6A497B15D710C4007EF6D8 /* NSColorPanel+BFColorPickerPopover.h in Headers */,
+				EC6A497D15D710C4007EF6D8 /* NSColorWell+BFColorPickerPopover.h in Headers */,
+				EC6A497F15D710C8007EF6D8 /* BFColorPickerPopoverView.h in Headers */,
+				EC6A498115D710C8007EF6D8 /* BFColorPickerViewController.h in Headers */,
+				EC6A498315D710C8007EF6D8 /* BFIconTabBar.h in Headers */,
+				EC6A498515D710CC007EF6D8 /* BFColorPickerPopover.h in Headers */,
+				EC6A498715D710CC007EF6D8 /* BFPopoverColorWell.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		EC459E8215CEDDB500297FBF /* BFColorPickerPopover Demo */ = {
 			isa = PBXNativeTarget;
@@ -189,11 +238,29 @@
 			buildRules = (
 			);
 			dependencies = (
+				EC6A498A15D71134007EF6D8 /* PBXTargetDependency */,
 			);
 			name = "BFColorPickerPopover Demo";
 			productName = ColorPickerPopup;
 			productReference = EC459E8315CEDDB500297FBF /* BFColorPickerPopover Demo.app */;
 			productType = "com.apple.product-type.application";
+		};
+		EC6A496815D71030007EF6D8 /* BFColorPickerPopover */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC6A497315D71030007EF6D8 /* Build configuration list for PBXNativeTarget "BFColorPickerPopover" */;
+			buildPhases = (
+				EC6A496515D71030007EF6D8 /* Sources */,
+				EC6A496615D71030007EF6D8 /* Frameworks */,
+				EC6A496715D71030007EF6D8 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BFColorPickerPopover;
+			productName = BFColorPicker;
+			productReference = EC6A496915D71030007EF6D8 /* libBFColorPickerPopover.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -217,6 +284,7 @@
 			projectRoot = "";
 			targets = (
 				EC459E8215CEDDB500297FBF /* BFColorPickerPopover Demo */,
+				EC6A496815D71030007EF6D8 /* BFColorPickerPopover */,
 			);
 		};
 /* End PBXProject section */
@@ -241,19 +309,34 @@
 			files = (
 				EC459E9415CEDDB500297FBF /* main.m in Sources */,
 				EC459E9B15CEDDB500297FBF /* AppDelegate.m in Sources */,
-				ECDEE46615D02E25004A4CC9 /* BFColorPickerPopover.m in Sources */,
-				ECDEE46815D02E25004A4CC9 /* NSColor+BFColorPickerPopover.m in Sources */,
-				ECDEE46915D02E25004A4CC9 /* NSColorPanel+BFColorPickerPopover.m in Sources */,
-				ECDEE46B15D02E25004A4CC9 /* BFPopoverColorWell.m in Sources */,
 				ECDEE47315D03C2E004A4CC9 /* ColoredView.m in Sources */,
-				ECDEE47615D056CD004A4CC9 /* NSColorWell+BFColorPickerPopover.m in Sources */,
-				EC12DEE315D1D36800D0C77B /* BFColorPickerPopoverView.m in Sources */,
-				EC12DEE415D1D36800D0C77B /* BFColorPickerViewController.m in Sources */,
-				EC12DEE515D1D36800D0C77B /* BFIconTabBar.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC6A496515D71030007EF6D8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC6A497A15D710C4007EF6D8 /* NSColor+BFColorPickerPopover.m in Sources */,
+				EC6A497C15D710C4007EF6D8 /* NSColorPanel+BFColorPickerPopover.m in Sources */,
+				EC6A497E15D710C4007EF6D8 /* NSColorWell+BFColorPickerPopover.m in Sources */,
+				EC6A498015D710C8007EF6D8 /* BFColorPickerPopoverView.m in Sources */,
+				EC6A498215D710C8007EF6D8 /* BFColorPickerViewController.m in Sources */,
+				EC6A498415D710C8007EF6D8 /* BFIconTabBar.m in Sources */,
+				EC6A498615D710CC007EF6D8 /* BFColorPickerPopover.m in Sources */,
+				EC6A498815D710CC007EF6D8 /* BFPopoverColorWell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EC6A498A15D71134007EF6D8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EC6A496815D71030007EF6D8 /* BFColorPickerPopover */;
+			targetProxy = EC6A498915D71134007EF6D8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		EC459E9015CEDDB500297FBF /* InfoPlist.strings */ = {
@@ -308,6 +391,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -330,6 +417,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -358,6 +449,22 @@
 			};
 			name = Release;
 		};
+		EC6A497115D71030007EF6D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EC6A497215D71030007EF6D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -378,6 +485,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		EC6A497315D71030007EF6D8 /* Build configuration list for PBXNativeTarget "BFColorPickerPopover" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC6A497115D71030007EF6D8 /* Debug */,
+				EC6A497215D71030007EF6D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
