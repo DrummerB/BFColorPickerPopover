@@ -168,7 +168,13 @@
 	if (object == self.colorPanel && [keyPath isEqualToString:@"color"]) {
 		_color = self.colorPanel.color;
 		if (self.target && self.action && [self.target respondsToSelector:self.action]) {
+      
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
 			[self.target performSelector:self.action withObject:self];
+      
+#pragma clang diagnostic pop
 		}
 	}
 }

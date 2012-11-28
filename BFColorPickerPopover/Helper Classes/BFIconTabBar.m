@@ -76,9 +76,9 @@
 }
 
 - (BFIconTabBarItem *)itemAtX:(CGFloat)x {
-	int index = floorf((x - [self startX]) / _itemWidth);
-	if (index >= 0 && index < [_items count]) {
-		return [_items objectAtIndex:index];
+	NSInteger index = floor((x - [self startX]) / _itemWidth);
+	if (index >= 0 && index < (NSInteger)[_items count]) {
+		return [_items objectAtIndex:(NSUInteger)index];
 	}
 	return nil;
 }
@@ -120,7 +120,7 @@
 }
 
 - (NSInteger)selectedIndex {
-	return [_selectedIndexes count] < 1 ? -1 : [_selectedIndexes firstIndex];
+	return [_selectedIndexes count] < 1 ? -1 : (NSInteger)[_selectedIndexes firstIndex];
 }
 
 - (NSArray *)selectedItems {
@@ -257,7 +257,7 @@
 	CGFloat startX = [self startX];
 	[self removeAllToolTips];
 	
-	for (int i = 0; i < [_items count]; i++) {
+	for (NSUInteger i = 0; i < [_items count]; i++) {
 		BFIconTabBarItem *item = [_items objectAtIndex:i];
 		CGFloat currentX = startX + i * _itemWidth;
 		

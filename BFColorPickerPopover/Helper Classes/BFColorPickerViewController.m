@@ -62,8 +62,8 @@
 	// Steal the color panel's toolbar icons ...
 	NSMutableArray *tabbarItems = [[NSMutableArray alloc] initWithCapacity:6];
 	NSToolbar *toolbar = self.colorPanel.toolbar;
-	NSInteger selectedIndex = 0;
-	for (int i = 0; i < toolbar.items.count; i++) {
+	NSUInteger selectedIndex = 0;
+	for (NSUInteger i = 0; i < toolbar.items.count; i++) {
 		NSToolbarItem *toolbarItem = toolbar.items[i];
 		NSImage *image = toolbarItem.image;
 		
@@ -101,9 +101,18 @@
 
 // Forward the selection action message to the color panel.
 - (void)tabBarChangedSelection:(BFIconTabBar *)tabbar {
-	NSToolbarItem *selectedItem = self.colorPanel.toolbar.items[tabbar.selectedIndex];
-	SEL action = selectedItem.action;
-	[self.colorPanel performSelector:action withObject:selectedItem];
+  if (tabbar.selectedIndex != -1)
+  {
+    NSToolbarItem *selectedItem = self.colorPanel.toolbar.items[(NSUInteger)tabbar.selectedIndex];
+    SEL action = selectedItem.action;
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
+    [self.colorPanel performSelector:action withObject:selectedItem];
+
+#pragma clang diagnostic pop
+  }
 }
 
 
