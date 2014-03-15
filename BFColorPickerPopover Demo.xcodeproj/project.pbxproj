@@ -438,6 +438,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/BFColorPickerPopover Demo-Prefix.pch";
 				INFOPLIST_FILE = "Demo/BFColorPickerPopover Demo-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "BFColorPickerPopover Demo";
 				WRAPPER_EXTENSION = app;
 			};
@@ -450,6 +451,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/BFColorPickerPopover Demo-Prefix.pch";
 				INFOPLIST_FILE = "Demo/BFColorPickerPopover Demo-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "BFColorPickerPopover Demo";
 				WRAPPER_EXTENSION = app;
 			};
