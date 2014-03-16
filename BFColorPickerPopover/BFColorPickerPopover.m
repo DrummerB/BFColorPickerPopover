@@ -39,11 +39,33 @@
 @interface BFColorPickerPopover ()
 @property (nonatomic) NSColorPanel *colorPanel;
 @property (nonatomic, weak) NSColorWell *colorWell;
+@property (nonatomic) BOOL observingColor;
 @end
 
 
 @implementation BFColorPickerPopover {
 	NSColor *_color;
+}
+
+@synthesize observingColor = _observingColor;
+
+- (void)setObservingColor:(BOOL)observingColor {
+	if (_observingColor == observingColor) {
+		return;
+	}
+
+	if (!self.colorPanel) {
+		observingColor = NO;
+	}
+
+	_observingColor = observingColor;
+
+	void *context = (__bridge void *)self;
+	if (_observingColor) {
+		[self.colorPanel addObserver:self forKeyPath:@"color" options:NSKeyValueObservingOptionNew context:context];
+	} else {
+		[self.colorPanel removeObserver:self forKeyPath:@"color" context:context];
+	}
 }
 
 #pragma mark -
@@ -108,7 +130,7 @@
 	[super showRelativeToRect:positioningRect ofView:positioningView preferredEdge:preferredEdge];
 	
 	self.colorPanel.color = _color;
-	[self.colorPanel addObserver:self forKeyPath:@"color" options:NSKeyValueObservingOptionNew context:NULL];
+	self.observingColor = YES;
 }
 
 // On pressing Esc, close the popover.
@@ -126,15 +148,14 @@
 	self.colorWell = nil;
 }
 
-- (void)closeAndDeactivateColorWell:(BOOL)deactivate removeTarget:(BOOL)removeTarget removeObserver:(BOOL)removeObserver {
+- (void)closeAndDeactivateColorWell:(BOOL)deactivate removeTarget:(BOOL)removeTarget {
 	
 	if (removeTarget) {
 		[self removeTargetAndAction];
 	}
-	if (removeObserver) {
-		[self.colorPanel removeObserver:self forKeyPath:@"color"];
-	}
-	
+
+	self.observingColor = NO;
+
 	// For some strange reason I couldn't figure out, the panel changes it's color when closed.
 	// To fix this, I reset the color after it's closed.
 	NSColor *backupColor = self.colorPanel.color;
@@ -147,13 +168,13 @@
 }
 
 - (void)close {
-	[self closeAndDeactivateColorWell:YES removeTarget:YES removeObserver:YES];
+	[self closeAndDeactivateColorWell:YES removeTarget:YES];
 }
 
 - (BOOL)_delegatePopoverShouldClose:(id)sender {
 	if ([super _delegatePopoverShouldClose:sender]) {
 		[self removeTargetAndAction];
-		[self.colorPanel removeObserver:self forKeyPath:@"color"];
+		self.observingColor = NO;
 		[self deactivateColorWell];
 		return YES;
 	}
@@ -165,7 +186,7 @@
 
 // Notify the target when the color changes.
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	if (object == self.colorPanel && [keyPath isEqualToString:@"color"]) {
+	if (object == self.colorPanel && [keyPath isEqualToString:@"color"] && context == (__bridge void *)self) {
 		_color = self.colorPanel.color;
 		if (self.target && self.action && [self.target respondsToSelector:self.action]) {
       
