@@ -7,7 +7,7 @@ Pod::Spec.new do |spec|
   spec.source = {:git => 'https://github.com/DrummerB/BFColorPickerPopover.git', :tag => spec.version.to_s}
   spec.license = { :type => 'BSD', :file => 'License' }
 
-  spec.platform = :osx
+  spec.platform = :osx, "10.8"
   spec.requires_arc = true
   spec.source_files = 'BFColorPickerPopover/**/*.{h,m}'
 end
