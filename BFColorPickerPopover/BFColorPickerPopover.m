@@ -148,14 +148,15 @@
 	self.colorWell = nil;
 }
 
-- (void)closeAndDeactivateColorWell:(BOOL)deactivate removeTarget:(BOOL)removeTarget {
+- (void)closeAndDeactivateColorWell:(BOOL)deactivate removeTarget:(BOOL)removeTarget removeObserver:(BOOL)removeObserver {
 	
 	if (removeTarget) {
 		[self removeTargetAndAction];
 	}
-
-	self.observingColor = NO;
-
+	if (removeObserver) {
+		self.observingColor = NO;
+	}
+	
 	// For some strange reason I couldn't figure out, the panel changes it's color when closed.
 	// To fix this, I reset the color after it's closed.
 	NSColor *backupColor = self.colorPanel.color;
@@ -168,7 +169,7 @@
 }
 
 - (void)close {
-	[self closeAndDeactivateColorWell:YES removeTarget:YES];
+	[self closeAndDeactivateColorWell:YES removeTarget:YES removeObserver:YES];
 }
 
 - (BOOL)_delegatePopoverShouldClose:(id)sender {
