@@ -67,7 +67,7 @@
 @interface BFIconTabBarItem : NSObject
 
 @property (nonatomic, strong) NSImage *icon;
-@property (nonatomic, copy) NSString *tooltip;
+@property (nonatomic, strong) NSString *tooltip;
 @property (nonatomic, unsafe_unretained) BFIconTabBar *tabBar;
 
 - (id)initWithIcon:(NSImage *)image tooltip:(NSString *)tooltipString;
