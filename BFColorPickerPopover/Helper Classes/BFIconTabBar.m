@@ -30,6 +30,8 @@
 
 #import "BFIconTabBar.h"
 
+#include <tgmath.h>
+
 @implementation BFIconTabBar {
 	NSMutableIndexSet *_selectedIndexes;
 	BFIconTabBarItem *_pressedItem;
@@ -76,7 +78,7 @@
 }
 
 - (BFIconTabBarItem *)itemAtX:(CGFloat)x {
-	NSInteger index = floor((x - [self startX]) / _itemWidth);
+	NSInteger index = (NSInteger) floor((x - [self startX]) / _itemWidth);
 	if (index >= 0 && index < (NSInteger)[_items count]) {
 		return [_items objectAtIndex:(NSUInteger)index];
 	}
@@ -262,17 +264,17 @@
 		CGFloat currentX = startX + i * _itemWidth;
 		
 		// Add tooltip area.
-		NSRect selectionFrame = NSMakeRect(floorf(currentX + 0.5), 1, _itemWidth, self.bounds.size.height - 2);
+		NSRect selectionFrame = NSMakeRect(floor(currentX + 0.5), 1, _itemWidth, self.bounds.size.height - 2);
 		[self addToolTipRect:selectionFrame owner:item.tooltip userData:nil];
 		
 		if ([_selectedIndexes containsIndex:i]) {
 			
 			//// Draw selection gradients
 			CGFloat gradientHeight = self.bounds.size.height - 2;
-			NSRect outsideLineFrameLeft = NSMakeRect(floorf(currentX + 0.5), 1, 1, gradientHeight);
-			NSRect insideLineFrameLeft = NSMakeRect(floorf(currentX + 1.5), 1, 1, gradientHeight);
-			NSRect outsideLineFrameRight = NSMakeRect(floorf(currentX + _itemWidth + 0.5), 1, 1, gradientHeight);
-			NSRect insideLineFrameRight = NSMakeRect(floorf(currentX + _itemWidth - 0.5), 1, 1, gradientHeight);
+			NSRect outsideLineFrameLeft = NSMakeRect(floor(currentX + 0.5), 1, 1, gradientHeight);
+			NSRect insideLineFrameLeft = NSMakeRect(floor(currentX + 1.5), 1, 1, gradientHeight);
+			NSRect outsideLineFrameRight = NSMakeRect(floor(currentX + _itemWidth + 0.5), 1, 1, gradientHeight);
+			NSRect insideLineFrameRight = NSMakeRect(floor(currentX + _itemWidth - 0.5), 1, 1, gradientHeight);
 			
 			NSBezierPath* selectionFramePath = [NSBezierPath bezierPathWithRect: selectionFrame];
 			[selectionGradient drawInBezierPath: selectionFramePath angle: -90];
@@ -296,7 +298,7 @@
 		NSImage *embossedImage = item.icon;
 		
 		CGRect fromRect = CGRectMake(0.0f, 0.0f, embossedImage.size.width, embossedImage.size.height);
-		CGPoint position = CGPointMake(roundf(center.x - embossedImage.size.width / 2.0f), roundf(center.y - embossedImage.size.height / 2.0f));
+		CGPoint position = CGPointMake(round(center.x - embossedImage.size.width / 2.0f), round(center.y - embossedImage.size.height / 2.0f));
 		[embossedImage drawAtPoint:position fromRect:fromRect operation:NSCompositeSourceOver fraction:1.0f];
 	}
 	

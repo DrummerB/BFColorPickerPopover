@@ -10,7 +10,9 @@
 #import "BFColorPickerPopover.h"
 #import "BFColorPickerViewController.h"
 
-static inline float pow2(float x) {return x*x;}
+#include <tgmath.h>
+
+static inline CGFloat pow2(CGFloat x) {return x*x;}
 
 @interface BFColorPickerViewController ()
 @property (nonatomic, weak) NSView *colorPanelView;

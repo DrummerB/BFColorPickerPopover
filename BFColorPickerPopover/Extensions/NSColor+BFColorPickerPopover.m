@@ -44,7 +44,7 @@
 }
 
 + (NSColor *)randomColor {
-	return [NSColor colorWithCalibratedRed:(float)random()/RAND_MAX green:(float) random()/RAND_MAX blue:(float) random()/RAND_MAX alpha:1.0f];
+	return [NSColor colorWithCalibratedRed:random()/RAND_MAX green:random()/RAND_MAX blue:random()/RAND_MAX alpha:1.0];
 }
 
 @end
