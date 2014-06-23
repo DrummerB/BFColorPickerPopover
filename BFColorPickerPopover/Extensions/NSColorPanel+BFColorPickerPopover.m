@@ -31,6 +31,8 @@
 #import "NSColorPanel+BFColorPickerPopover.h"
 #import "BFColorPickerPopover.h"
 
+#include <tgmath.h>
+
 static BOOL colorPanelEnabled = YES;
 
 @interface BFColorPickerPopover ()
@@ -63,10 +65,10 @@ static BOOL colorPanelEnabled = YES;
 	NSColorPanel *panel = [NSColorPanel sharedColorPanel];
 	NSColor *color = [panel color];
 	return [NSString stringWithFormat:@"r: %d, g: %d, b: %d, a: %d",
-			(int)roundf([color redComponent]*255),
-			(int)roundf([color greenComponent]*255),
-			(int)roundf([color blueComponent]*255),
-			(int)roundf([color alphaComponent]*255)];
+			(int)round([color redComponent]*255),
+			(int)round([color greenComponent]*255),
+			(int)round([color blueComponent]*255),
+			(int)round([color alphaComponent]*255)];
 }
 
 @end
