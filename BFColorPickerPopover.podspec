@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = 'BFColorPickerPopover'
-  spec.version = '1.0.0'
+  spec.version = '1.0.1'
   spec.authors = {'Balázs Faludi' => 'balazsfaludi@gmail.com'}
   spec.homepage = 'https://github.com/DrummerB/BFColorPickerPopover'
   spec.screenshot   = 'http://i.imgur.com/Qm38i.png'
