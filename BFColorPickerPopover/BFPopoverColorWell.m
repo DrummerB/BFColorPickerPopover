@@ -73,6 +73,7 @@
 	
 	// Setup and show the popover.
 	self.popover = [BFColorPickerPopover sharedPopover];
+    self.popover.delegate = self;
 	self.popover.color = self.color;
 	[self.popover showRelativeToRect:self.frame ofView:self.superview preferredEdge:self.preferredEdgeForPopover];
 	self.popover.colorWell = self;
@@ -101,6 +102,7 @@
 	if (!self.isActive) return;
 	[super deactivate];
 	self.popover.colorWell = nil;
+    self.popover.delegate = nil;
 	self.popover = nil;
 	self.isActive = NO;
 }
@@ -114,6 +116,11 @@
 		[super mouseDown:theEvent];
 	}
 	
+}
+
+- (void)popoverDidClose:(NSNotification *)notification
+{
+    [self deactivate];
 }
 
 @end
