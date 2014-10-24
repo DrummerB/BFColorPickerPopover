@@ -1,5 +1,10 @@
 # BFColorPickerPopover
 
+[![Pod Version](http://img.shields.io/cocoapods/v/BFColorPickerPopover.svg?style=flat)](https://github.com/DrummerB/BFColorPickerPopover)
+[![Pod Platform](http://img.shields.io/cocoapods/p/BFColorPickerPopover.svg?style=flat)](https://github.com/DrummerB/BFColorPickerPopover)
+[![Pod License](http://img.shields.io/cocoapods/l/BFColorPickerPopover.svg?style=flat)](http://opensource.org/licenses/BSD-3-Clause)
+[![Dependency Status](https://www.versioneye.com/objective-c/BFColorPickerPopover/badge.svg?style=flat)](https://www.versioneye.com/objective-c/BFColorPickerPopover)
+
 ![Screenshot](http://i.imgur.com/Qm38i.png)
 
 Summary
