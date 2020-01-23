@@ -56,7 +56,7 @@
 //	[[BFColorPickerPopover sharedPopover] setAnimates:NO];
 	
 	for (NSColorWell *well in @[colorWell1, colorWell2, colorWell3, colorWell4, colorWell5, colorWell6, colorWell7, colorWell8])
-		well.color = [NSColor randomColor];
+		well.color = [NSColor bfcp_randomColor];
 }
 - (IBAction)buttonClicked:(id)sender {
 	
