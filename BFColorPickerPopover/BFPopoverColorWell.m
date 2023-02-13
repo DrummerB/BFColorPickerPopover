@@ -71,9 +71,9 @@ static NSColorWell *hiddenWell = nil;
             NSColorWellStyleMinimal,        /// A minimally adorned well. By default shows a popover color picker when clicked; this interaction behavior can be customized.
             NSColorWellStyleExpanded,       /// An expanded well with a dedicated button for revealing the color panel. By default, clicking the well will show a popover color picker; this interaction behavior can be customized.
         };
-        [self setValue:@(NSColorWellStyleMinimal) forKey:@"colorWellStyle"];
+        [self setValue:@(NSColorWellStyleExpanded) forKey:@"colorWellStyle"];
 #else
-        self.colorWellStyle = NSColorWellStyleMinimal;
+        self.colorWellStyle = NSColorWellStyleExpanded;
 #endif
         return;
     }
