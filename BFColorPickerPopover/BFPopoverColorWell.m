@@ -65,7 +65,16 @@ static NSColorWell *hiddenWell = nil;
 - (void)setup {
     if (@available(macOS 13.0, *)) {
         // this will show a small popover in macOS 13.0
-        self.colorWellStyle = NSColorWellStyleExpanded;
+#if !defined(MAC_OS_VERSION_13_0) || MAC_OS_VERSION_13_0 > MAC_OS_X_VERSION_MAX_ALLOWED
+        typedef NS_ENUM(NSInteger, NSColorWellStyle) {
+            NSColorWellStyleDefault = 0,    /// The default `colorWellStyle`. A well that accepts drag/drop of colors as well as reveals the color panel when clicked.
+            NSColorWellStyleMinimal,        /// A minimally adorned well. By default shows a popover color picker when clicked; this interaction behavior can be customized.
+            NSColorWellStyleExpanded,       /// An expanded well with a dedicated button for revealing the color panel. By default, clicking the well will show a popover color picker; this interaction behavior can be customized.
+        };
+        [self setValue:@(NSColorWellStyleMinimal) forKey:@"colorWellStyle"];
+#else
+        self.colorWellStyle = NSColorWellStyleMinimal;
+#endif
         return;
     }
 
