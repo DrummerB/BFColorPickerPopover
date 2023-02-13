@@ -299,7 +299,11 @@
 		
 		CGRect fromRect = CGRectMake(0.0f, 0.0f, embossedImage.size.width, embossedImage.size.height);
 		CGPoint position = CGPointMake(round(center.x - embossedImage.size.width / 2.0f), round(center.y - embossedImage.size.height / 2.0f));
-		[embossedImage drawAtPoint:position fromRect:fromRect operation:NSCompositeSourceOver fraction:1.0f];
+
+#if !defined(MAC_OS_X_VERSION_10_12) || MAC_OS_X_VERSION_10_12 > MAC_OS_X_VERSION_MIN_REQUIRED
+#define NSCompositingOperationSourceOver NSCompositeSourceOver
+#endif
+		[embossedImage drawAtPoint:position fromRect:fromRect operation:NSCompositingOperationSourceOver fraction:1.0f];
 	}
 	
 	
