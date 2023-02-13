@@ -31,7 +31,6 @@
 #import "BFPopoverColorWell.h"
 #import "BFColorPickerPopover.h"
 #import "NSColorPanel+BFColorPickerPopover.h"
-#import "NSColorWell+BFColorPickerPopover.h"
 
 @interface BFColorPickerPopover ()
 @property (nonatomic) NSColorPanel *colorPanel;
@@ -43,10 +42,34 @@
 @property (nonatomic, readwrite) BOOL isActive;
 @end
 
+@interface NSColorWell (BFColorPickerPopover)
+
+- (void)popoverDidClose:(NSNotification *)notification;
+- (void)_performActivationClickWithShiftDown:(BOOL)shift;
+
+@end
+
 @implementation BFPopoverColorWell
 
+static NSColorWell *hiddenWell = nil;
+
++ (void)deactivateAll {
+    [[NSColorPanel sharedColorPanel] disablePanel];
+    hiddenWell = [[NSColorWell alloc] init];
+    hiddenWell.color = [NSColor colorWithCalibratedRed:1/255.0 green:2/255.0 blue:3/255.0 alpha:1];
+    [hiddenWell activate:YES];
+    [hiddenWell deactivate];
+    [[NSColorPanel sharedColorPanel] enablePanel];
+}
+
 - (void)setup {
-	self.preferredEdgeForPopover = NSMaxXEdge;
+    if (@available(macOS 13.0, *)) {
+        // this will show a small popover in macOS 13.0
+        self.colorWellStyle = NSColorWellStyleExpanded;
+        return;
+    }
+
+    self.preferredEdgeForPopover = NSMaxXEdge;
 	self.useColorPanelIfAvailable = YES;
 }
 
@@ -69,7 +92,13 @@
 }
 
 - (void)activateWithPopover {
-	if (self.isActive) return;
+    if (@available(macOS 13.0, *)) {
+        return;
+    }
+
+    if (self.isActive) {
+        return;
+    }
 	
 	// Setup and show the popover.
 	self.popover = [BFColorPickerPopover sharedPopover];
@@ -88,8 +117,15 @@
 }
 
 - (void)activate:(BOOL)exclusive {
-	if (self.isActive) return;
-	
+    if (@available(macOS 13.0, *)) {
+        [super activate:exclusive];
+        return;
+    }
+
+    if (self.isActive) {
+        return;
+    }
+
 	if (self.useColorPanelIfAvailable && [NSColorPanel sharedColorPanelExists] && [[NSColorPanel sharedColorPanel] isVisible]) {
 		[super activate:exclusive];
 		self.isActive = YES;
@@ -99,7 +135,15 @@
 }
 
 - (void)deactivate {
-	if (!self.isActive) return;
+    if (@available(macOS 13.0, *)) {
+        [super deactivate];
+        return;
+    }
+
+    if (!self.isActive) {
+        return;
+    }
+
 	[super deactivate];
 	self.popover.colorWell = nil;
     self.popover.delegate = nil;
@@ -109,7 +153,12 @@
 
 // Force using a popover (even if useColorPanelIfAvailable = YES), when the user double clicks the well.
 - (void)mouseDown:(NSEvent *)theEvent {
-	if([theEvent clickCount] == 2 && [NSColorPanel sharedColorPanelExists] && [[NSColorPanel sharedColorPanel] isVisible]) {
+    if (@available(macOS 13.0, *)) {
+        [super mouseDown:theEvent];
+        return;
+    }
+
+    if([theEvent clickCount] == 2 && [NSColorPanel sharedColorPanelExists] && [[NSColorPanel sharedColorPanel] isVisible]) {
 		[self deactivate];
 		[self activateWithPopover];
 	} else {
@@ -120,7 +169,37 @@
 
 - (void)popoverDidClose:(NSNotification *)notification
 {
+    if ([super respondsToSelector:@selector(popoverDidClose:)]) {
+        [super popoverDidClose:notification];
+        return;
+    }
+
     [self deactivate];
+}
+
+- (void)_performActivationClickWithShiftDown:(BOOL)shift {
+    if (@available(macOS 13.0, *)) {
+        if ([super respondsToSelector:@selector(_performActivationClickWithShiftDown:)]) {
+            [super _performActivationClickWithShiftDown:shift];
+        }
+
+        return;
+    }
+
+    if (!self.isActive) {
+        BFColorPickerPopover *popover = [BFColorPickerPopover sharedPopover];
+        if (popover.isShown) {
+            BOOL animatesBackup = popover.animates;
+            popover.animates = NO;
+            [popover close];
+            popover.animates = animatesBackup;
+        }
+        [BFColorPickerPopover sharedPopover].target = nil;
+        [BFColorPickerPopover sharedPopover].action = NULL;
+        [self activate:!shift];
+    } else {
+        [self deactivate];
+    }
 }
 
 @end

@@ -50,7 +50,12 @@ static BOOL colorPanelEnabled = YES;
 }
 
 - (void)orderFront:(id)sender {
-	if (colorPanelEnabled) {
+    if (@available(macOS 13.0, *)) {
+        [super orderFront:sender];
+        return;
+    }
+
+    if (colorPanelEnabled) {
 		NSColorPanel *panel = [BFColorPickerPopover sharedPopover].colorPanel;
 		if (panel) {
 			self.contentView = panel.contentView;
