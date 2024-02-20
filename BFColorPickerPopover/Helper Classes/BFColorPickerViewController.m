@@ -30,8 +30,9 @@
 
 #import "BFColorPickerViewController.h"
 #import "BFIconTabBar.h"
-#import "NSColorWell+BFColorPickerPopover.h"
 #import "BFColorPickerPopoverView.h"
+#import "BFPopoverColorWell.h"
+
 
 #define kColorPickerViewControllerTabbarHeight 30.0f
 
@@ -53,7 +54,7 @@
 	// If the shared color panel is visible, close it, because we need to steal its views.
 	if ([NSColorPanel sharedColorPanelExists] && [[NSColorPanel sharedColorPanel] isVisible]) {
 		[[NSColorPanel sharedColorPanel] orderOut:self];
-		[NSColorWell deactivateAll];
+		[BFPopoverColorWell deactivateAll];
 	}
 
 	self.colorPanel = [NSColorPanel sharedColorPanel];

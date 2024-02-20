@@ -32,6 +32,8 @@
 
 @interface BFPopoverColorWell : NSColorWell <NSPopoverDelegate>
 
++ (void)deactivateAll;
+
 @property (nonatomic) NSRectEdge preferredEdgeForPopover;
 @property (nonatomic) BOOL useColorPanelIfAvailable;
 

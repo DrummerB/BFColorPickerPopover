@@ -33,6 +33,6 @@
 @interface NSColor (BFColorPickerPopover)
 
 - (CGColorRef)copyCGColor;
-+ (NSColor *)randomColor;
++ (NSColor *)bfcp_randomColor;
 
 @end
